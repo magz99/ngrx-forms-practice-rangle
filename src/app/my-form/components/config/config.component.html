@@ -1,0 +1,7 @@
+<form novalidate [ngrxFormState]="configForm$ | async">
+  <label>Min Age:</label>
+  <input
+    type="number"
+    [ngrxFormControlState]="(configForm$ | async).controls.minAge"
+  />
+</form>

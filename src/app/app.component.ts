@@ -1,3 +1,5 @@
+import { InvalidFieldsSelector } from './utils/error-count';
+import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngrx-forms-practice2';
+  appErrors$: Observable<number>;
+  personErrors$: Observable<number>;
+  configErrors$: Observable<number>;
+
+  constructor(private invalidFieldsSelector: InvalidFieldsSelector) {
+    this.appErrors$ = this.invalidFieldsSelector.appErrors$;
+    this.personErrors$ = this.invalidFieldsSelector.personErrors$;
+    this.configErrors$ = this.invalidFieldsSelector.configErrors$;
+  }
 }
